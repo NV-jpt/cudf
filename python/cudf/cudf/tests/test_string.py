@@ -1537,6 +1537,11 @@ def test_string_filter_alphanum():
             "The quick bRoWn fox juMps over the laze DOG",
             '123nr98nv9rev!$#INF4390v03n1243<>?}{:-"',
             "accénted",
+            "Bald Eagle",
+            "leopard",
+            "Golden Eagle",
+            "SNAKE", 
+            "",
         ],
     ],
 )
