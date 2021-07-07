@@ -1077,6 +1077,63 @@ class StringMethods(ColumnMethodsMixin):
             cpp_slice_strings(self._column, start, stop, step),
         )
 
+    def istitle(self) -> ParentType:
+        """
+        Check whether all words in a string are "Title Case"
+
+        If a string has zero characters, False is returned for
+        that check.
+
+        Returns : Series or Index of bool
+            Series or Index of boolean values with the same
+            length as the original Series/Index.
+
+        See also
+        --------
+        isalnum
+            Check whether all characters are alphanumeric.
+
+        isalpha
+            Check whether all characters are alphabetic.
+
+        isdecimal
+            Check whether all characters are decimal.
+
+        isdigit
+            Check whether all characters are digits.
+
+        isnumeric
+            Check whether all characters are numeric.
+
+        isfloat
+            Check whether all characters are float.
+
+        islower
+            Check whether all characters are lowercase.
+
+        isspace
+            Check whether all characters are whitespace.
+
+        isupper
+            Check whether all characters are uppercase.
+        
+        
+        Examples
+        --------
+        >>> import cudf
+        >>> s = cudf.Series(['leopard', 'Golden Eagle', 'SNAKE', ''])
+        >>> s.str.istitle()
+        0    False
+        1     True
+        2    False
+        3    False
+        dtype: bool
+
+        """
+        return self._return_or_inplace(cpp_title(self._column) == self._column)
+
+
+
     def isinteger(self) -> ParentType:
         """
         Check whether all characters in each string form integer.
